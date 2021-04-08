@@ -26,6 +26,9 @@ def findHrefByClass(clase, arrayData, soup):
 
 
 URL = "https://es.indeed.com/jobs?q=data+scientist&l=Barcelona&filter=0&sort=date&start=0"
+headers = {
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
+}
 
 respuesta = requests.get(URL)
 status_code = respuesta.status_code
@@ -40,17 +43,18 @@ if status_code == 200:
     soup = BeautifulSoup(respuesta.content, "lxml")
     paginas = soup.find(id='searchCountPages')
     res = str(paginas).split()
-    numElements = int(res[5]) #number of elements
+    numElements = int(res[5])
     print(URL[75:])  # substring from "start" to final
+
+    iterateURL = URL
 
     start = 0
     while start < numElements:
-
-        respuesta = requests.get(URL)
+        respuesta = requests.get(iterateURL, headers=headers, timeout=12)
         soup = BeautifulSoup(respuesta.content, "lxml")
 
         jobtitle = findContentByClass('a', "jobtitle", jobtitleArray, soup)
-        companyName = findContentByClass('span', "company", CompanyArray, soup)
+        companyName = findContentByClass('', "company", CompanyArray, soup)
         location = findContentByClass('', "accessible-contrast-color-location", locationArray, soup)
         link = findHrefByClass("jobtitle", linkArray, soup)
 
@@ -59,7 +63,11 @@ if status_code == 200:
         print(iterateURL)
         start += 10  # Esto es lo mismo que escribir:  count = count + 1
 
-    data = {'title': jobtitle, 'company': companyName, 'location': location, 'URL': link}
+    data = {'title': jobtitle, 'location': location, 'URL': link}
+    print(len(jobtitle))
+    #print(len(companyName))
+    print(len(location))
+    print(len(link))
     df = pd.DataFrame(data)
     print(df)
 
