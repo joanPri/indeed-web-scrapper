@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 import lxml
 import re
+import time
 
 
 def findContentByClass(atributo, clase, arrayData, soup):
@@ -24,12 +25,19 @@ def findHrefByClass(clase, arrayData, soup):
         arrayData.append(href)
     return arrayData
 
+def getComapnyName(clase, arrayData, soup):
+    items = soup.find_all(class_="jobsearch-SerpJobCard", partial=False)
+    for item in items:
+        name = item.find(class_=clase)
+        s = str(name)
+        cleanHtml = re.sub('<[^>]+>', '', s).strip()
+        arrayData.append(cleanHtml)
+    return arrayData
 
 URL = "https://es.indeed.com/jobs?q=data+scientist&l=Barcelona&sort=date&start=0"
 headers = {
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'
 }
-
 respuesta = requests.get(URL)
 status_code = respuesta.status_code
 if status_code == 200:
@@ -52,10 +60,12 @@ if status_code == 200:
     start = 0
     while start < numPages:
         respuesta = requests.get(iterateURL, headers=headers, timeout=15)
+        time.sleep(1)
+
         soup = BeautifulSoup(respuesta.content, "lxml")
 
         jobtitle = findContentByClass('a', "jobtitle", jobtitleArray, soup)
-        companyName = findContentByClass('', "company", CompanyArray, soup)
+        companyName = getComapnyName("company", CompanyArray, soup)
         location = findContentByClass('', "accessible-contrast-color-location", locationArray, soup)
         link = findHrefByClass("jobtitle", linkArray, soup)
 
@@ -64,7 +74,7 @@ if status_code == 200:
         print(iterateURL)
         start += 10  # Esto es lo mismo que escribir:  count = count + 1
 
-    data = {'title': jobtitle, 'location': location, 'URL': link}
+    data = {'title': jobtitle, 'company': companyName, 'location': location, 'URL': link}
     print(len(jobtitle))
     print(len(companyName))
     print(len(location))
