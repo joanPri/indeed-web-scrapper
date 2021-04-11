@@ -35,7 +35,7 @@ python nombreArchivo.py
 El script se encarga de recoger los datos de indeed y extraer los siguiente campos exportados en un dataset en csv:
 - Título del trabajo
 - Empresa
-- Descricpión
+- Descripción
 - Link
 - Localización
 
