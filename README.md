@@ -1,6 +1,7 @@
 # Indeed Web Scrapper
+Indeed Web Scrapper es un script que se encarga de recoger los datos de las ofertas de trabajo de _Data scientist_ en Barcelona que se suben a [indeed.com](https://es.indeed.com), y almacenarlos en un CSV. Así evitas tener de recorrer las cientos de ofertas de trabajo que permanecen en la web.
 
-Practica 1 de la asignatura _Tipología y ciclo de vida de los datos_, del Máster en Ciencia de Datos de la Universitat Oberta de Catalunya.
+El trabajo forma parte de la Practica 1 de la asignatura _Tipología y ciclo de vida de los datos_, del Máster en Ciencia de Datos de la Universitat Oberta de Catalunya.
 
 ## Miembros del equipo
 
@@ -31,3 +32,11 @@ El script se debe ejecutar de la siguiente manera:
 ```
 python nombreArchivo.py
 ```
+El script se encarga de recoger los datos de indeed y extraer los siguiente campos exportados en un dataset en csv:
+- Título del trabajo
+- Empresa
+- Descricpión
+- Link
+- Localización
+
+## 
