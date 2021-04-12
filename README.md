@@ -27,7 +27,7 @@ import time
 
 ```
 
-Para ejecutar el script "main.py" (en python) es necesaria la instalación de diversas bibliotecas:
+Para ejecutar el script "scrapper.py" (en python) es necesaria la instalación de diversas bibliotecas:
 
 ```
 import selenium
