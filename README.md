@@ -5,7 +5,7 @@ El trabajo forma parte de la Practica 1 de la asignatura _Tipología y ciclo de 
 
 ## Miembros del equipo
 
-Se ha realiada por [Joan Prieto](https://github.com/joanPri) y [Ricardo Martinez](https://github.com/joanPri), ambos pertenecen al aula 2 de _Tipología y ciclo de vida de los datos_.
+Se ha realiada por [Joan Prieto](https://github.com/joanPri) y [Ricardo Martinez](https://github.com/), ambos pertenecen al aula 2 de _Tipología y ciclo de vida de los datos_.
 
 ## Instalación
 
@@ -24,8 +24,9 @@ import time
 import pandas as pd
 ```
 
-Para usar selenium se necesita un driver que haga de interficie con el navegador, estos drivers estan en la carpeta Drivers, en este proyecto el driver està vinculado con el navegador firefox, pero ofrecemos tanto chome como microsoft excel cambiando una linea de codigo y aplicando el navegador con su webpack correspondiente.
-Hemos adjuntado los drivers en el proyecto (carpeta "drivers").
+Para usar selenium se necesita un driver que haga de interficie con el navegador, estos drivers estan en la carpeta Drivers, en este proyecto el driver està vinculado con el navegador Firefox.
+Para descargar los drivers:
+https://github.com/mozilla/geckodriver/releases (enlace para descargar el driver de Firefox)
 
 ## Entorno de desarrollo
 Para llevar a cabo el proyecto nos hemos ayudado de la distribucion de Anaconda. Esta nos facilita el paquete Python para poder trabajar con dicho lenguaje de progrmación.
@@ -36,30 +37,27 @@ Para poder ejecutar el script dispuesto en este proyecto, deberemos de disponer 
 Por lo tanto desde la linea de comandados en el prompt de Anaconda, y situandonos en el directorio donde se encuentre el fichero, tenemos que:
 Ejecutar de la siguiente manera el script:
 ```
-python scrapper.py
+python nombreArchivo.py
 ```
-Ambos hemos testeado el script desde la "anaconda prompt".
-
 El script se encarga de recoger los datos de indeed y extraer los siguiente campos exportados en un dataset en csv:
 - Título del trabajo - String(recoge el tag titulo de cada clickcard)
 - Empresa - String (recoge el tag de la compañia anunciante)
 - Descripción - String (recoge la descripción completa que se obtiene 
-- Link (url)
-- Localización (en este caso será Barcelona o alrededores)
-- Descripcion empleo (Resumen de la oferta)
-- Fecha de publicación (Cuando se publicó)
+- Link
+- Localización
+- Descripcion empleo
+- Fecha de publicación
 - Profile
 
-Debemos comentar los siguientes puntos de interes:
+Debemos de comentar los siguientes puntos de interes:
 - Para poder interactuar con los elementos que nos ofrecia la pagina web seleccionada empleamos Selenium.
 Al emplear dicho paquete frente a Request, hemos encontrado un inconveniente y es la detección de los bots por parte de las páginas Web así como la denegación de acceso a la web por "hcaptcha". Tras investigar como intentar implementar un comportamiento mas humano a nuestro bot, (modificanod el user agent en la options del driver cuando lanzamos las peticiones, como cancelando los alert dialog que se nos muestran,etc) no hemos podido conseguir pasar del paginado número 5.
-Por lo tanto obtenemos el total de los puesto de trabajo de las 4 paginas primeras.
+Por lo tanto obtenemos el total de los puesto de trabajo de las 4 paginas primeras. Un total aproximado de 60 empleos.
 
 ## Futuros pasos
-Para continuar indagando en el mundo del scrapping debemos conocer en mayor medida como trabajan estos detectores de bots, asi como implementar tecnicas que recreen de manera mas correcta la interacción humana. Además seria buena idea añadir un menú o la posibilidad de añadir parametros a la ejecución del script. 
-
-## Documentación
-Si quiere consultar la descripción de la práctica, consulte la [documentación](https://github.com/joanPri/indeed-web-scrapper/tree/main/doc).
+Para continuar indagando en el mundo del scrapping deberemos de conocer en mayor medida como trabajan estos detectores de bots asi como implementar tecnicas que recreen de manera mas correcta la interacción humana. Tambien podremos permitir mediante la introduccion de keys la seleccion de la Provincia, Ciudad, etc asi como marcas los botonos que nos interesen para crear un historico más completo por Ciudad, tipo de empleo, etc. Todo ello desde la introducción de las keys necesarias por linea de comandos al ejecutar el script o mendiante la lectura de un fichero con dichas keys.
 
 ## Ejemplo de salida
 Para ver como queda una exportación de las ofertas de trabajos que se extraen con el script, entra [aquí](https://github.com/joanPri/indeed-web-scrapper/blob/main/indeedScrap_selenium.csv).
+
+
