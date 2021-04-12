@@ -58,4 +58,6 @@ Por lo tanto obtenemos el total de los puesto de trabajo de las 4 paginas primer
 ## Futuros pasos
 Para continuar indagando en el mundo del scrapping debemos conocer en mayor medida como trabajan estos detectores de bots, asi como implementar tecnicas que recreen de manera mas correcta la interacción humana. Además seria buena idea añadir un menú o la posibilidad de añadir parametros a la ejecución del script. 
 
-## 
+## Documentación
+Si quiere consultar la descripción de la práctica, consulte la [documentación](https://github.com/joanPri/indeed-web-scrapper/tree/main/doc).
+
