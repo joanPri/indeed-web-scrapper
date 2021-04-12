@@ -1,4 +1,3 @@
-import sys
 import selenium
 from selenium import webdriver
 import requests
@@ -11,6 +10,7 @@ import time
 import pandas as pd
 
 
+
 def findContentByClass(atributo, clase, arrayData, soup):
     if(atributo == ''):
         items = soup.find_all(class_=clase, partial=False)
@@ -19,7 +19,7 @@ def findContentByClass(atributo, clase, arrayData, soup):
     for item in items:
         arrayData.append(str(item.text))
 
-def findProfile(item,item2):
+def findProfile(item,item2,arrayData):
     match_senior=re.search(r'Senior',item)
     match_junior=re.search(r'Junior',item)
     match_intership=re.search(r'Internship',item)
@@ -32,26 +32,26 @@ def findProfile(item,item2):
         else:
             match_senior_des=re.search(r'Senior',item2)
             if match_senior_des:    
-                profileArray.append(str(match_senior_des.group()))
+                arrayData.append(str(match_senior_des.group()))
                 return
         if match_intership:
-            profileArray.append(str(match_intershit.group()))
+            arrayData.append(str(match_intershit.group()))
         else:
             match_intership_des=re.search(r'Intership',item2)
             if match_intership_des:
-                profileArray.append(str(match_intershit_des.group()))
+                arrayData.append(str(match_intershit_des.group()))
                 return
         if match_junior:
-            profileArray.append(str(match_junior.group()))
+            arrayData.append(str(match_junior.group()))
         else:
             match_junior_des=re.search(r'Junior',item2)
             if match_junior_des:
-                profileArray.append(str(match_junior_des.group()))
+                arrayData.append(str(match_junior_des.group()))
             else:
-                profileArray.append("Undefined")
+                arrayData.append("Undefined")
                 return
     except:
-        profileArray.append("Not found")
+        arrayData.append("Not found")
     
     
 def findHrefByClass(clase, arrayData, soup):
@@ -72,21 +72,18 @@ def getCompanyName(clase, arrayData, soup):
         arrayData.append(cleanHtml)
     
 
-def fecha_publicacion(item):
+def fecha_publicacion(item,arrayData):
     match=re.search(r'hace [0-9]{1,} días',item)
     if match:
-        #Contamos el número de caracteres y hacemos un substring
         literal=str(match.group())
         ss=(literal[5:7])
         final=ss.strip()
-        fechasArray.append(final)
+        arrayData.append(final)
     else:
-        fechasArray.append("not found")
-        
+        arrayData.append("not found")
 
 def get_jobs():
-    start = 0
-    error="Correcto"
+    error="Ninguno"
     try:
         CompanyArray = []
         locationArray = []
@@ -108,8 +105,8 @@ def get_jobs():
         numElements = int(res[5])
         numPages = numElements/14 * 10
         # print(URL[75:]) substring from "start" to final
-        
-        while start < 4:
+        start = 0
+        while start < 5:
             soup=BeautifulSoup(browser.page_source,'html5lib')
             tabla=soup.find("table",id="resultsBody")
             body=tabla.find('td',id='resultsCol')
@@ -127,8 +124,8 @@ def get_jobs():
                         jobtitleArray.append(cabecera.replace('\n',""))
                         descripcion = detalles.rstrip('\n')
                         descriptionArray.append(descripcion.replace('\n'," "))
-                        fecha_publicacion(detalles)
-                        findProfile(cabecera.replace('\n',""),descripcion.replace('\n'," "))
+                        fecha_publicacion(detalles,fechasArray)
+                        findProfile(cabecera.replace('\n',""),descripcion.replace('\n'," "),profileArray)
                     iterator+=1
                     time.sleep(2)
                 except:
@@ -162,8 +159,8 @@ def get_jobs():
         
     except:
         print("No soy un robot ha saltado.")
-        if start==0:
-            return
+        #if start==0:
+        #    return
         
         print(len(jobtitleArray))
         print(len(CompanyArray))
@@ -171,13 +168,14 @@ def get_jobs():
         print(len(linkArray))
         print(len(fechasArray))
         print(len(descriptionArray))
+        print(len(profileArray))
         
         if(len(jobtitleArray)<len(CompanyArray)):
             CompanyArray=CompanyArray[0:len(jobtitleArray)]
             locationArray=locationArray[0:len(jobtitleArray)]
             linkArray=linkArray[0:len(jobtitleArray)]
         
-        data = {'title': jobtilte, 'company': CompanyArray, 'location': locationArray, 'URL': linkArray, 'Date':fechasArray , 'Descripcion' : descriptionArray, 'Profile':profileArray }
+        data = {'title': jobtitleArray, 'company': CompanyArray, 'location': locationArray, 'URL': linkArray, 'Date':fechasArray , 'Descripcion' : descriptionArray, 'Profile':profileArray }
         df = pd.DataFrame(data)
         df.to_csv('indeedScrap.csv', index=False)
         print(df)
@@ -186,5 +184,4 @@ if __name__ == '__main__':
     
     trabajos = get_jobs()
     
-
 
