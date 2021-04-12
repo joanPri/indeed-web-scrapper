@@ -57,4 +57,7 @@ Por lo tanto obtenemos el total de los puesto de trabajo de las 4 paginas primer
 ## Futuros pasos
 Para continuar indagando en el mundo del scrapping deberemos de conocer en mayor medida como trabajan estos detectores de bots asi como implementar tecnicas que recreen de manera mas correcta la interacción humana. Tambien podremos permitir mediante la introduccion de keys la seleccion de la Provincia, Ciudad, etc asi como marcas los botonos que nos interesen para crear un historico más completo por Ciudad, tipo de empleo, etc. Todo ello desde la introducción de las keys necesarias por linea de comandos al ejecutar el script o mendiante la lectura de un fichero con dichas keys.
 
-## 
+## Ejemplo de salida
+Para ver como queda una exportación de las ofertas de trabajos que se extraen con el script, entra [aquí](https://github.com/joanPri/indeed-web-scrapper/blob/main/indeedScrap_selenium.csv).
+
+
