@@ -125,7 +125,6 @@ def get_jobs():
                     if(detalles not in descriptionArray):
                         cabecera = str(item.text)
                         jobtitleArray.append(cabecera.replace('\n',""))
-                        #CompanyArray_prueba.append(str(nombre_compañias[iterator].text))
                         descripcion = detalles.rstrip('\n')
                         descriptionArray.append(descripcion.replace('\n'," "))
                         fecha_publicacion(detalles)
