@@ -60,7 +60,7 @@ if status_code == 200:
     start = 0
     while start < numPages:
         respuesta = requests.get(iterateURL, headers=headers, timeout=15)
-        time.sleep(1)
+        time.sleep(2)
 
         soup = BeautifulSoup(respuesta.content, "lxml")
 
@@ -75,10 +75,6 @@ if status_code == 200:
         start += 10  # Esto es lo mismo que escribir:  count = count + 1
 
     data = {'title': jobtitle, 'company': companyName, 'location': location, 'URL': link}
-    print(len(jobtitle))
-    print(len(companyName))
-    print(len(location))
-    print(len(link))
     df = pd.DataFrame(data)
     print(df)
 
