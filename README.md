@@ -61,3 +61,5 @@ Para continuar indagando en el mundo del scrapping debemos conocer en mayor medi
 ## Documentación
 Si quiere consultar la descripción de la práctica, consulte la [documentación](https://github.com/joanPri/indeed-web-scrapper/tree/main/doc).
 
+## Ejemplo de salida
+Para ver como queda una exportación de las ofertas de trabajos que se extraen con el script, entra [aquí](https://github.com/joanPri/indeed-web-scrapper/blob/main/indeedScrap_selenium.csv).
