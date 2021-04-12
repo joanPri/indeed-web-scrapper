@@ -190,42 +190,44 @@ pre code {
 </div>
 <div id="título-dataset" class="section level1" number="2">
 <h1 number="2"><span class="header-section-number">2</span> Título dataset</h1>
-<p>Indeed web scraper for data scientist in Barcelona</p>
+<p><em>Indeed web scraper for data scientist in Barcelona</em></p>
 </div>
 <div id="contenido" class="section level1" number="3">
 <h1 number="3"><span class="header-section-number">3</span> Contenido</h1>
 <p>Nos encontraremos con los siguiente datos:</p>
 <ul>
 <li><strong>title</strong>: Titulo de la oferta de trabajo</li>
-<li><strong>company</strong>: Nombre de la compañia que ha creado la oferta</li>
+<li><strong>company</strong>: Nombre de la compañía que ha creado la oferta</li>
 <li><strong>location</strong>: Localización del puesto de trabajo</li>
 <li><strong>descricpion</strong>: Detalles de la oferta.</li>
 <li><strong>URL</strong>: Link para visualizar la oferta en su web.</li>
+<li><strong>Fecha de publicación</strong>: Cuando se publicó</li>
+<li><strong>Profile:</strong> Si es junior senior o indefinido.</li>
 </ul>
-<p>Para recoger los datos hemos utilizado beautifullsoup4 y selenium. A través de bs4 hacemos la peticion y transformamos el html a datos, mientras que con selenium podemos interactuar con la página, asi entrar en cada una de las ofertas y seguir extrayendo mas información. A todo esto le hemos puesto un timeout para evitar sobrecargar el servidor y que nos bloqueen.</p>
+<p>Para recoger los datos hemos utilizado beautifullsoup4 y selenium. A través de bs4 hacemos la peticion y transformamos el html a datos, mientras que con <em>selenium</em> podemos interactuar con la página, así entrar en cada una de las ofertas y seguir extrayendo mas información. A todo esto le hemos puesto un <em>timeout</em> para evitar sobrecargar el servidor y que nos bloqueen.</p>
 </div>
 <div id="agradecimientos" class="section level1" number="4">
 <h1 number="4"><span class="header-section-number">4</span> Agradecimientos</h1>
-<p>A Indeed.com, porque ha creado una plataforma simple y con los datos necesarios para poder resumir un puesto de trabajo de manera sencilla y clara. Evidentemente, con la modernización de las tecnologias es necesario la creación de portales que recogen las ofertas laborales, así poder consultar en cada momento los posibles trabajos.</p>
+<p>A Indeed.com, porque ha creado una plataforma simple y con los datos necesarios para poder resumir un puesto de trabajo de manera sencilla y clara. Evidentemente, con la modernización de las tecnologías es necesario la creación de portales que recogen las ofertas laborales, así poder consultar en cada momento los posibles trabajos.</p>
 </div>
 <div id="inspiración" class="section level1" number="5">
 <h1 number="5"><span class="header-section-number">5</span> Inspiración</h1>
-<p>Aunque ambos tenemos trabajo, es importante seguir al dia con las ofertas de trabajo, así que se nos ocurrio crear un pequeño scrapper para recoger la informacion de las nuevas ofertas de data-science con mas facilidad. Para ello recurrimos a indeed.com, una web reconocida mundialmente por listar ofertas de trabajo de muchos paises.</p>
+<p>Aunque ambos tenemos trabajo, es importante seguir al dia con las ofertas de trabajo, así que se nos ocurrió crear un pequeño scraper para recoger la información de las nuevas ofertas de data-science con mas facilidad. Para ello recurrimos a indeed.com, una web reconocida mundialmente por listar ofertas de trabajo de muchos paises.</p>
 <div style="page-break-after: always;"></div>
 </div>
 <div id="licencia" class="section level1" number="6">
 <h1 number="6"><span class="header-section-number">6</span> Licencia</h1>
 <p>La licencia que hemos decidido usar es la <em><a href="https://creativecommons.org/licenses/by-sa/4.0/">Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a></em>, es una licencia que permite copiar,redistribuir y transformar para cualquier propósito (incluido comercial).</p>
-<p>Bajo los terminos:</p>
+<p>Bajo los términos:</p>
 <ul>
-<li><p><em>Attribution</em>: Deberan dar dar crédito de manera adecuada, brindar un enlace a la licencia, e indicar si se han realizado cambios. De esta manera se reconocera el trabajo del autor y el que haga uso y aporte sobre el proyecto.</p></li>
-<li><p><em>ShareAlike</em>: Deberan compartir el codigo de cualquier modificación con la misma licencia, con esto beneficiamos a la creación de un mejor proyecto y que sea de dominio publico.</p></li>
+<li><p><em>Attribution</em>: Deberán dar crédito de manera adecuada, brindar un enlace a la licencia, e indicar si se han realizado cambios. De esta manera se reconocerá el trabajo del autor y el que haga uso y aporte sobre el proyecto.</p></li>
+<li><p><em>ShareAlike</em>: Deberán compartir el código de cualquier modificación con la misma licencia, con esto beneficiamos a la creación de un mejor proyecto y que sea de dominio publico.</p></li>
 </ul>
-<p>Hemos escogido esta licencia ya que la simpleza del script y su facil adaptación (es tan sencillo como cambiar la url para cambiar el trabajo o la locaclización, o añadir un parametro para dinamizar los parametros de la url) permiten ser modificados con facilidad para cualquier otro fin.</p>
+<p>Hemos escogido esta licencia ya que la simpleza del script y su fácil adaptación (es tan sencillo como cambiar la url para cambiar el trabajo o la localización, o añadir un parámetro para dinamizar los parámetros de la url) permiten ser modificados con facilidad para cualquier otro fin.</p>
 </div>
 <div id="codigo" class="section level1" number="7">
 <h1 number="7"><span class="header-section-number">7</span> Codigo</h1>
-<p>Se puede acceder al codigo mediante el enlace: <a href="https://github.com/joanPri/indeed-web-scrapper/">Indeed Web Scraper</a></p>
+<p>Se puede acceder al código mediante el enlace: <a href="https://github.com/joanPri/indeed-web-scrapper/">Indeed Web Scraper</a></p>
 <table>
 <thead>
 <tr class="header">
