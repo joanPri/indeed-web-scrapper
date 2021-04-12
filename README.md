@@ -9,9 +9,11 @@ Se ha realiada por [Joan Prieto](https://github.com/joanPri) y [Ricardo Martinez
 
 
 ## Explicación
-En este proyecto se podran observar dos scripts diferentes, en cada uno de ellos se han implementado las metodologias actuales de scrapping. En el scritp llamado "main.py", se ha llevado a cabo una recopilacion de los datos de la página web seleccionada mediante peticiones Request, estas permiten hacer paticiones HTTP y obtener mediante BeautifulSoup el contenido de una página web para posteriormente ser procesado.
+En este proyecto se podran observar dos scripts diferentes, en cada uno de ellos se han implementado las metodologias actuales de scrapping. En el script llamado **"main.py"**, se ha llevado a cabo una recopilacion de los datos de la página web seleccionada mediante peticiones Request, estas permiten hacer paticiones HTTP y obtener mediante BeautifulSoup el contenido de una página web para posteriormente ser procesado.
 
-Por otro lado se puedo ver otro script denominado "scrapper.py", este aplica la metodologia de Selenium para obtener los datos de la página web. Selenium nos permite una interacción más completa con la página web, pudiendo ejecutar scripts de la própia página web, así como ejecutar clicks sobre botones. Tambien basado en peticiones HTTP, se apoya en un driver (en función del explorador será diferente) para ello. Este driver hace de conexión con el explorador, permitiendo testear la página web.
+Por otro lado se puedo ver otro script denominado **"scrapper.py"**, este aplica la metodologia de Selenium para obtener los datos de la página web. Selenium nos permite una interacción más completa con la página web, pudiendo ejecutar scripts de la própia página web, así como ejecutar clicks sobre botones. Tambien basado en peticiones HTTP, se apoya en un driver (en función del explorador será diferente) para ello. Este driver hace de conexión con el explorador, permitiendo testear la página web.
+
+*Nota: Los scripts son totalmente independientes, no hace falta ejecutarlos a la vez.*
 
 ## Instalación
 
@@ -50,7 +52,7 @@ Para llevar a cabo el proyecto nos hemos ayudado de la distribucion de Anaconda.
 Por lo tanto es necesario disponer de Anaconda instalado en Windows10 (se opta por este sistema operativo por ser de fácil manejo y de amplia implemetnación).
 
 ## Ejecturar script (usage)
-Para poder ejecutar ambos script dispuestos en este proyecto, deberemos de disponer en la misma caparpeta el Driver "geckodriver" (para el caso scrapper.py), este driver corresponde a Firefox. Es el que hemos elegido aunque se podria dispuesto de otro driver (en la carpeta adjunta se disponen lo drives de Edge y de Chrome) para implementar el scrapper. 
+Para poder ejecutar ambos script dispuestos en este proyecto, deberemos de disponer en la misma caparpeta el Driver "geckodriver" (para el caso scrapper.py), este driver corresponde a Firefox. Es el que hemos elegido aunque se podria disponer de otro driver (en la carpeta adjunta se disponen lo drives de Edge y de Chrome) para implementar el scrapper. 
 Por lo tanto desde la linea de comandados en el prompt de Anaconda, y situandonos en el directorio donde se encuentre el fichero, tenemos que:
 Ejecutar los scripts de la siguiente manera:
 ```
