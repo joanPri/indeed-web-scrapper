@@ -59,6 +59,8 @@ Ejecutar los scripts de la siguiente manera:
 scrapper.py
 main.py
 ```
+o añadiendo _python_ delante.
+
 En el caso del script main.py al no poder interaccionar con los datos javascript o scripts de la página recoge una menor variedad de datos:
 El script se encarga de recoger los datos de indeed y extraer los siguiente campos exportados en un dataset en csv:
 - Título del trabajo - String(recoge el tag titulo de cada clickcard)
