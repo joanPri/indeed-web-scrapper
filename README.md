@@ -95,5 +95,5 @@ Para ver como queda una exportación de las ofertas de trabajos que se extraen c
 
 ## Resumen
 Para concluir comentar en que dos ámbitos diferentes usariamos cada script.
-a) En un caso en el cual únicamente se requiera del parseo de la página web que se renderiza de manera directa tras una petición HTTP empleariamos el script main.py y su metodología dispuest, este es más ligero que Selenium dando una mayor velocidad de procesado.
-b) En caso de tener que ejecutar elementos dinámicos o scripts, así como código de javascript, nos decantariamos por Selenium a pesar del inconveniente comentado.
+- a) En un caso en el cual únicamente se requiera del parseo de la página web que se renderiza de manera directa tras una petición HTTP empleariamos el script main.py y su metodología dispuest, este es más ligero que Selenium dando una mayor velocidad de procesado.
+- b) En caso de tener que ejecutar elementos dinámicos o scripts, así como código de javascript, nos decantariamos por Selenium a pesar del inconveniente comentado.
