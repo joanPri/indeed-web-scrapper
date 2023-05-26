@@ -1,37 +1,33 @@
 # Indeed Web Scraper
-Indeed Web Scrapper es un script que se encarga de recoger los datos de las ofertas de trabajo de _Data scientist_ en Barcelona que se suben a [indeed.com](https://es.indeed.com), y almacenarlos en un CSV. Así evitas tener de recorrer las cientos de ofertas de trabajo que permanecen en la web.
+Indeed Web Scraper is a script that collects job data for Data Scientists in Barcelona from [indeed.com](https://es.indeed.com) and stores it in a CSV file. This script saves you from having to browse through hundreds of job listings on the website.
 
-El trabajo forma parte de la Practica 1 de la asignatura _Tipología y ciclo de vida de los datos_, del Máster en Ciencia de Datos de la Universitat Oberta de Catalunya.
+This work is part of Assignment 1 of the course "Data Typology and Life Cycle" in the Master's in Data Science program at Universitat Oberta de Catalunya.
 
-## Miembros del equipo
+## Team Members
+This project was carried out by [Joan Prieto](https://github.com/joanPri) and Ricardo Martinez.
 
-Se ha realiada por [Joan Prieto](https://github.com/joanPri) y [Ricardo Martinez](https://github.com/joanPri), ambos pertenecen al aula 2 de _Tipología y ciclo de vida de los datos_.
+## Explanation
+In this project, you will find two different scripts, each implementing current scraping methodologies. The script named **"main.py"** collects data from the selected website using requests to make HTTP requests and BeautifulSoup to extract the content of the web page for further processing.
 
+On the other hand, there is another script called **"scrapper.py"** that uses the Selenium methodology to extract data from the web page. Selenium allows for more comprehensive interaction with the web page, enabling the execution of page-specific scripts and performing button clicks. It also relies on HTTP requests and a driver (which varies depending on the browser) for this purpose. The driver acts as a connection to the browser, allowing the web page to be tested.
 
-## Explicación
-En este proyecto se podran observar dos scripts diferentes, en cada uno de ellos se han implementado las metodologias actuales de scrapping. En el script llamado **"main.py"**, se ha llevado a cabo una recopilacion de los datos de la página web seleccionada mediante peticiones Request, estas permiten hacer paticiones HTTP y obtener mediante BeautifulSoup el contenido de una página web para posteriormente ser procesado.
+*Note: The scripts are completely independent, and there is no need to run them simultaneously.*
 
-Por otro lado se puedo ver otro script denominado **"scrapper.py"**, este aplica la metodologia de Selenium para obtener los datos de la página web. Selenium nos permite una interacción más completa con la página web, pudiendo ejecutar scripts de la própia página web, así como ejecutar clicks sobre botones. Tambien basado en peticiones HTTP, se apoya en un driver (en función del explorador será diferente) para ello. Este driver hace de conexión con el explorador, permitiendo testear la página web.
+## Installation
+To run the "main.py" script (in Python), you need to install the following libraries:
 
-*Nota: Los scripts son totalmente independientes, no hace falta ejecutarlos a la vez.*
-
-## Instalación
-
-Para ejecutar el script "main.py" (en python) es necesaria la instalación de diversas bibliotecas:
-
-```
+```python
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
 import lxml
 import re
 import time
-
 ```
 
-Para ejecutar el script "scrapper.py" (en python) es necesaria la instalación de diversas bibliotecas:
+To run the "scrapper.py" script (in Python), you need to install the following libraries:
 
-```
+```python
 import selenium
 from selenium import webdriver
 import requests
@@ -44,58 +40,54 @@ import time
 import pandas as pd
 ```
 
-Para usar selenium se necesita un driver que haga de interficie con el navegador, estos drivers estan en la carpeta Drivers, en este proyecto el driver està vinculado con el navegador firefox, pero ofrecemos tanto chome como microsoft excel cambiando una linea de codigo y aplicando el navegador con su webpack correspondiente.
-Hemos adjuntado los drivers en el proyecto (carpeta "drivers").
+To use Selenium, you need a driver that acts as an interface with the browser. The drivers are located in the "Drivers" folder. In this project, the driver is linked to the Firefox browser, but we also provide drivers for Chrome and Microsoft Edge. You can change one line of code to use the desired browser with its corresponding driver. The drivers are included in the project (in the "drivers" folder).
 
-## Entorno de desarrollo
-Para llevar a cabo el proyecto nos hemos ayudado de la distribucion de Anaconda. Esta nos facilita el paquete Python para poder trabajar con dicho lenguaje de progrmación.
-Por lo tanto es necesario disponer de Anaconda instalado en Windows10 (se opta por este sistema operativo por ser de fácil manejo y de amplia implemetnación).
+## Development Environment
+We used the Anaconda distribution to carry out the project, which provides the Python package for working with the programming language. Therefore, it is necessary to have Anaconda installed on Windows 10 (we chose this operating system for its ease of use and wide implementation).
 
-## Ejecturar script (usage)
-Para poder ejecutar ambos script dispuestos en este proyecto, deberemos de disponer en la misma caparpeta el Driver "geckodriver" (para el caso scrapper.py), este driver corresponde a Firefox. Es el que hemos elegido aunque se podria disponer de otro driver (en la carpeta adjunta se disponen lo drives de Edge y de Chrome) para implementar el scrapper. 
-Por lo tanto desde la linea de comandados en el prompt de Anaconda, y situandonos en el directorio donde se encuentre el fichero, tenemos que:
-Ejecutar los scripts de la siguiente manera:
+## Running the Script (Usage)
+To run both scripts provided in this project, you should have the "geckodriver" driver (for the "scrapper.py" script) in the same folder. This driver corresponds to Firefox, which we chose, but you can use another driver (the attached folder includes drivers for Edge and Chrome) to implement the scraper. From the command prompt in Anaconda, navigate to the directory where the file is located and execute the scripts as follows:
+
 ```
 scrapper.py
 main.py
 ```
-o añadiendo _python_ delante.
 
-En el caso del script main.py al no poder interaccionar con los datos javascript o scripts de la página recoge una menor variedad de datos:
-El script se encarga de recoger los datos de indeed y extraer los siguiente campos exportados en un dataset en csv:
-- Título del trabajo - String(recoge el tag titulo de cada clickcard)
-- Empresa - String (recoge el tag de la compañia anunciante)
-- Descripción - String (recoge la descripción completa que se obtiene 
-- Link (url)
-- Localización (en este caso será Barcelona o alrededores)
+Alternatively, you can add `python` before the script names.
 
+In the case of the "main.py" script, as it cannot interact with JavaScript or page scripts, it collects a limited range of data. The script collects data from Indeed and exports the following fields to a CSV dataset:
+- Job Title (string): Retrieves the title
 
-En el caso del script scrapper.py al interactuar con los datos javascript y los scripts recoge una información mas diversa, aunque menor cantidad por el punto que se comenta a continuación:
-- Título del trabajo - String(recoge el tag titulo de cada clickcard)
-- Empresa - String (recoge el tag de la compañia anunciante)
-- Descripción - String (recoge la descripción completa que se obtiene 
-- Link (url)
-- Localización (en este caso será Barcelona o alrededores)
-- Descripcion empleo (Resumen de la oferta)
-- Fecha de publicación (Cuando se publicó)
-- Profile - Si la oferta es para junior, senior o indefinido (este campo lo calculamos nosotros buscando en todo el contenido si aparecen estas palabras).
+ tag of each click card.
+- Company (string): Retrieves the tag of the advertising company.
+- Description (string): Retrieves the complete description.
+- Link (URL)
+- Location (in this case, it will be Barcelona or surrounding areas)
 
-Debemos comentar los siguientes puntos de interes:
-- Para poder interactuar con los elementos que nos ofrecia la pagina web seleccionada empleamos Selenium.
-Al emplear dicho paquete frente a Request, hemos encontrado un inconveniente y es la detección de los bots por parte de las páginas Web así como la denegación de acceso a la web por "hcaptcha". Tras investigar como intentar implementar un comportamiento mas humano a nuestro bot, (modificanod el user agent en la options del driver cuando lanzamos las peticiones, como cancelando los alert dialog que se nos muestran,etc) no hemos podido conseguir pasar del paginado número 5.
-Por lo tanto obtenemos el total de los puesto de trabajo de las 4 paginas primeras.
-- Por el contrario Request lleva a cabo un parseo total de todo el páginado.
-- 
-## Futuros pasos
-Para continuar indagando en el mundo del scrapping debemos conocer en mayor medida como trabajan estos detectores de bots, asi como implementar tecnicas que recreen de manera mas correcta la interacción humana. Además seria buena idea añadir un menú o la posibilidad de añadir parametros a la ejecución del script. 
+In the case of the "scrapper.py" script, as it interacts with JavaScript and scripts, it collects more diverse information, although in smaller quantities due to the limitation mentioned above. It exports the following fields:
+- Job Title (string): Retrieves the title tag of each click card.
+- Company (string): Retrieves the tag of the advertising company.
+- Description (string): Retrieves the complete description.
+- Link (URL)
+- Location (in this case, it will be Barcelona or surrounding areas)
+- Job Description (summary of the offer)
+- Publication Date (when it was published)
+- Profile - Whether the offer is for junior, senior, or undefined (this field is calculated by searching for these words in the entire content).
 
-## Documentación
-Si quiere consultar la descripción de la práctica, consulte la [documentación](https://github.com/joanPri/indeed-web-scrapper/tree/main/doc).
+We would like to highlight the following points of interest:
+- To interact with the elements offered by the selected web page, we used Selenium. When using Selenium instead of Requests, we encountered the challenge of bots detection by websites and access denial due to "hcaptcha." Although we attempted to implement more human-like behavior in our bot (modifying the user agent in the driver options when making requests, handling alert dialogs, etc.), we were only able to scrape the first 5 pages due to these limitations. Therefore, we obtained the total job postings from the first 4 pages.
+- In contrast, Requests performs a complete parse of the entire pagination.
 
-## Ejemplo de salida
-Para ver como queda una exportación de las ofertas de trabajos que se extraen con el script, entra [aquí](https://github.com/joanPri/indeed-web-scrapper/blob/main/indeedScrap_selenium.csv).
+## Future Steps
+To further explore the world of web scraping, we need to gain a better understanding of how these bot detectors work and implement techniques that more accurately simulate human interaction. It would also be a good idea to add a menu or the possibility to add parameters to the script execution.
 
-## Resumen
-Para concluir comentar en que dos ámbitos diferentes usariamos cada script.
-- a) En un caso en el cual únicamente se requiera del parseo de la página web que se renderiza de manera directa tras una petición HTTP empleariamos el script main.py y su metodología dispuest, este es más ligero que Selenium dando una mayor velocidad de procesado.
-- b) En caso de tener que ejecutar elementos dinámicos o scripts, así como código de javascript, nos decantariamos por Selenium a pesar del inconveniente comentado.
+## Documentation
+If you want to see the description of the assignment, please refer to the [documentation](https://github.com/joanPri/indeed-web-scrapper/tree/main/doc).
+
+## Example Output
+To see an example of the job listings exported using the script, click [here](https://github.com/joanPri/indeed-web-scrapper/blob/main/indeedScrap_selenium.csv).
+
+## Summary
+In conclusion, the two scripts would be used in different scenarios:
+- a) If only parsing the directly rendered web page after an HTTP request is required, the "main.py" script with its methodology is more lightweight than Selenium and provides faster processing.
+- b) If dynamic elements, scripts, and JavaScript code need to be executed, Selenium would be the preferred choice despite the aforementioned limitation.
